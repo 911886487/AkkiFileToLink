@@ -9,9 +9,9 @@ load_dotenv()
 
 class Var(object):
     MULTI_CLIENT = False
-    API_ID = int(getenv('22642447'))
-    API_HASH = str(getenv('0a0961b8e6769275c9bbe4e428912ed8'))
-    BOT_TOKEN = str(getenv('8525808996:AAG9zDKy27WlI3ZeNHd32UzoHELWiY1-vko'))
+    API_ID = int(getenv('API_ID'))
+    API_HASH = str(getenv('API_HASH'))
+    BOT_TOKEN = str(getenv('BOT_TOKEN'))
     name = str(getenv('name', 'AkkiFileStreamBot'))
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
     WORKERS = int(getenv('WORKERS', '4'))
