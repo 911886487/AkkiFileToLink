@@ -1,0 +1,58 @@
+# (c) Akki ji
+import datetime
+import os
+import motor.motor_asyncio
+
+
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "mongodb+srv://diciy76322_db_user:6ZgXpZspTkn0HY4R@cluster0.o1jiljm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+)
+
+DATABASE_NAME = "AkkiStreamBot"
+
+
+class Database:
+    def __init__(self):
+        self._client = motor.motor_asyncio.AsyncIOMotorClient(DATABASE_URL)
+        self.db = self._client[DATABASE_NAME]
+        self.col = self.db.users
+
+    def new_user(self, id):
+        return {
+            "id": int(id),
+            "join_date": datetime.date.today().isoformat()
+        }
+
+    async def add_user(self, id):
+        if not await self.is_user_exist(id):
+            await self.col.insert_one(self.new_user(id))
+
+    async def add_user_pass(self, id, ag_pass):
+        await self.add_user(id)
+        await self.col.update_one(
+            {"id": int(id)},
+            {"$set": {"ag_p": ag_pass}},
+            upsert=True
+        )
+
+    async def get_user_pass(self, id):
+        user = await self.col.find_one({"id": int(id)})
+        return user.get("ag_p") if user else None
+
+    async def is_user_exist(self, id):
+        user = await self.col.find_one({"id": int(id)})
+        return True if user else False
+
+    async def total_users_count(self):
+        return await self.col.count_documents({})
+
+    async def get_all_users(self):
+        return self.col.find({})
+
+    async def delete_user(self, user_id):
+        await self.col.delete_many({"id": int(user_id)})
+
+
+db = Database()
+
