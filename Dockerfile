@@ -6,4 +6,4 @@ COPY . /Akki-stream-bot
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "bot.py"]
+CMD ["python", "python -m Adarsh"]
