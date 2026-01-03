@@ -1,5 +1,6 @@
 services:
-  akki-clone-bot:
+  akki-stream-bot:
     build: .
     container_name: akki-stream-bot
+
     restart: always
