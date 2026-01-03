@@ -12,9 +12,9 @@ class Var(object):
     # ===== BASIC =====
     MULTI_CLIENT = False
 
-    API_ID = int(getenv("API_ID"))
-    API_HASH = str(getenv("API_HASH"))
-    BOT_TOKEN = str(getenv("BOT_TOKEN"))
+    API_ID = int(getenv("22642447"))
+    API_HASH = str(getenv("0a0961b8e6769275c9bbe4e428912ed8"))
+    BOT_TOKEN = str(getenv("8525808996:AAG9zDKy27WlI3ZeNHd32UzoHELWiY1-vko"))
 
     name = str(getenv("name", "AkkiFileStreamBot"))
 
@@ -33,9 +33,9 @@ class Var(object):
 
     # ===== OWNER =====
     OWNER_ID = set(
-        int(x) for x in os.environ.get("OWNER_ID", "").split() if x.isdigit()
+        int(x) for x in os.environ.get("OWNER_ID", "7778185746").split() if x.isdigit()
     )
-    OWNER_USERNAME = str(getenv("OWNER_USERNAME", ""))
+    OWNER_USERNAME = str(getenv("OWNER_USERNAME", "Me_Akkiji"))
 
     # ===== HEROKU / VPS =====
     NO_PORT = bool(getenv("NO_PORT", False))
@@ -61,7 +61,7 @@ class Var(object):
         URL = f"http://{FQDN}/"
 
     # ===== DATABASE =====
-    DATABASE_URL = str(getenv("DATABASE_URL", ""))
+    DATABASE_URL = str(getenv("DATABASE_URL", "mongodb+srv://diciy76322_db_user:6ZgXpZspTkn0HY4R@cluster0.o1jiljm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"))
 
     # ===== CHANNELS =====
     UPDATES_CHANNEL = str(getenv("UPDATES_CHANNEL", "-1002490871576"))
