@@ -19,11 +19,11 @@ jobs:
         # key: ${{ secrets.SSH_KEY }}
         port: 22
         script: |
-          cd /srv/my-apps/akki-clone-bot
+          cd /srv/my-apps/akki-stream-bot
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_ed25519_second
           git pull origin main
-          docker compose up -d --build akki-clone-bot
+          docker compose up -d --build akki-stream-bot
           docker system prune -f
           docker ps
           exit
