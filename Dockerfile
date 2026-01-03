@@ -1,8 +1,8 @@
 FROM python:3.10.8
 
-WORKDIR /Akki_clone_manager
+WORKDIR /Akki-stream-bot
 
-COPY . /Akki_clone_manager
+COPY . /Akki-stream-bot
 
 RUN pip install -r requirements.txt
 
