@@ -1,22 +1,12 @@
-version: "3.9"
-
 services:
   akki-stream-bot:
     container_name: akki-stream-bot
     build: .
     restart: unless-stopped
 
-    environment:
-      TZ: Asia/Kolkata
+    cap_add:
+      - SYS_TIME
 
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-
-    command: sh -c "sleep 10 && python3 -m Adarsh"
-
-    logging:
-      driver: json-file
-      options:
-        max-size: "10m"
-        max-file: "3"
