@@ -5,14 +5,18 @@ services:
     container_name: akki-stream-bot
     build: .
     restart: unless-stopped
+
+    environment:
+      TZ: Asia/Kolkata
+
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-    environment:
-      - TZ=Asia/Kolkata
+
+    command: sh -c "sleep 10 && python3 -m Adarsh"
+
     logging:
+      driver: json-file
       options:
         max-size: "10m"
         max-file: "3"
-        
-
