@@ -1,6 +1,18 @@
+version: "3.9"
+
 services:
   akki-stream-bot:
-    build: .
     container_name: akki-stream-bot
+    build: .
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    environment:
+      - TZ=Asia/Kolkata
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+        
 
-    restart: always
